@@ -7,10 +7,10 @@ module Api
         short 'Posts'
         formats ['json']
         param :id, Post::POST_SLUG_REGEX, :desc => 'Post ID', :required => false
-        api_version "1"
+        api_version '1'
       end
 
-      api :GET, '/posts', 'List posts'
+      api :GET, '/v1posts', 'List posts'
       description 'List posts with pagination support'
       param :page, :number, desc: 'Page number'
       def index
@@ -20,7 +20,7 @@ module Api
         render json: @posts, meta: pagination_dict(@posts), include: [:owner]
       end
 
-      api :GET, '/posts/:id', 'Show post'
+      api :GET, '/v1/posts/:id', 'Show post'
       description 'Show post with specifed slug'
       param :id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       def show
@@ -37,7 +37,7 @@ module Api
         end
       end
 
-      api :POST, '/post', 'Create post'
+      api :POST, '/v1/posts', 'Create post'
       description 'Create post with params'
       param_group :post
       def create
@@ -52,7 +52,7 @@ module Api
         end
       end
 
-      api :PUT, '/posts/:id', 'Update post'
+      api :PUT, '/v1/posts/:id', 'Update post'
       description 'Update post with params'
       param :id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       param_group :post
@@ -65,7 +65,7 @@ module Api
         end
       end
 
-      api :POST, '/posts/:id/publish', 'Publish post'
+      api :POST, '/v1/posts/:id/publish', 'Publish post'
       description 'Publish post to the Web.'
       param :id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       def publish
@@ -77,7 +77,7 @@ module Api
         end
       end
 
-      api :POST, '/posts/:id/unpublish', 'Unpublish post'
+      api :POST, '/v1/posts/:id/unpublish', 'Unpublish post'
       description 'Unpublish post from the Web.'
       param :id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       def unpublish
@@ -89,7 +89,7 @@ module Api
         end
       end
 
-      api :POST, '/posts/:id/follow', 'Follow post'
+      api :POST, '/v1/posts/:id/follow', 'Follow post'
       description 'Follow published post.'
       param :id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       def follow
@@ -99,7 +99,7 @@ module Api
         render json: @post, include: [], root: 'post'
       end
 
-      api :POST, '/posts/:id/unfollow', 'Unfollow post'
+      api :POST, '/v1/posts/:id/unfollow', 'Unfollow post'
       description 'Unfollow post.'
       param :id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       def unfollow
@@ -109,7 +109,7 @@ module Api
         render json: @post, include: [], root: 'post'
       end
 
-      api :DELETE, '/posts/:id', 'Destroy post'
+      api :DELETE, '/v1/posts/:id', 'Destroy post'
       description 'Destroy post from our DB.'
       param :id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       def destroy

@@ -7,10 +7,10 @@ module Api
         short 'Users'
         formats ['json']
         param :id, :number, :desc => 'User ID', :required => false
-        api_version "1"
+        api_version '1'
       end
 
-      api :GET, '/users', 'List users'
+      api :GET, '/v1/users', 'List users'
       description 'List users with pagination support'
       param :page, :number, desc: 'Page number'
       def index
@@ -20,7 +20,7 @@ module Api
         render json: @users, meta: pagination_dict(@users), include: []
       end
 
-      api :GET, '/users/:id', 'Show user'
+      api :GET, '/v1/users/:id', 'Show user'
       description 'Show user with specifed :id'
       param :id, :number, desc: 'User id', required: true
       def show
@@ -37,7 +37,7 @@ module Api
         end
       end
 
-      api :POST, '/users', 'Create user'
+      api :POST, '/v1/users', 'Create user'
       description 'Create user with specifed user params'
       param_group :user
       def create
@@ -51,7 +51,7 @@ module Api
         end
       end
 
-      api :POST, '/users/:id', 'Update user'
+      api :POST, '/v1/users/:id', 'Update user'
       description 'Update user with specifed user params'
       param :id, :number, desc: 'User id', required: true
       param_group :user
@@ -64,7 +64,7 @@ module Api
         end
       end
 
-      api :DELETE, '/users/:id', 'Destroy user for admins'
+      api :DELETE, '/v1/users/:id', 'Destroy user for admins'
       description 'Destroy user from our DB.'
       param :id, :number, desc: 'User id', required: true
       def destroy

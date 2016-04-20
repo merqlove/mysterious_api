@@ -9,10 +9,10 @@ module Api
         formats ['json']
         param :id, :number, :desc => 'Comment ID', :required => false
         param :post_id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
-        api_version "1"
+        api_version '1'
       end
 
-      api :GET, '/posts/:post_id/comments', 'List post comments'
+      api :GET, '/v1/posts/:post_id/comments', 'List post comments'
       description 'List Comments of the Post with pagination support'
       param :page, :number, desc: 'Page number'
       param :post_id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
@@ -24,7 +24,7 @@ module Api
         render json: @comments, meta: pagination_dict(@comments)
       end
 
-      api :GET, '/posts/:post_id/comments/:id', 'Show comment'
+      api :GET, '/v1/posts/:post_id/comments/:id', 'Show comment'
       description 'Show comment for the specifed post'
       param :id, :number, desc: 'Comment id', required: true
       param :post_id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
@@ -39,7 +39,7 @@ module Api
         end
       end
 
-      api :POST, '/post/:post_id/comments', 'Create comment'
+      api :POST, '/v1/posts/:post_id/comments', 'Create comment'
       description 'Create comment for the post with params'
       param :post_id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
       param_group :comment
@@ -55,7 +55,7 @@ module Api
         end
       end
 
-      api :PUT, '/post/:post_id/comments/:id', 'Update comment'
+      api :PUT, '/v1/posts/:post_id/comments/:id', 'Update comment'
       description 'Update comment for the specified post with params'
       param :id, :number, desc: 'Comment id', required: true
       param :post_id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true
@@ -69,7 +69,7 @@ module Api
         end
       end
 
-      api :DELETE, '/posts/:post_id/comments/:id', 'Destroy comment'
+      api :DELETE, '/v1/posts/:post_id/comments/:id', 'Destroy comment'
       description 'Destroy comment from our DB.'
       param :id, :number, desc: 'Comment id', required: true
       param :post_id, Post::POST_SLUG_REGEX, desc: 'Post slug', required: true

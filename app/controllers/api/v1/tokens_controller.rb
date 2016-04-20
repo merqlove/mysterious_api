@@ -6,10 +6,10 @@ module Api
       resource_description do
         short 'Tokens'
         formats ['json']
-        api_version "1"
+        api_version '1'
       end
 
-      api :POST, '/tokens', 'Update users'
+      api :POST, '/v1/tokens', 'Update users'
       description """
         Refresh tokens for user.\n
         User can login via BasicAuth & update its token by this service.\n
