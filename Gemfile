@@ -45,7 +45,6 @@ gem 'dalli'
 
 # Seed
 gem 'sprig', '~> 0.1', github: 'merqlove/sprig'
-gem 'ffaker', require: false
 
 group :development, :test do
   gem 'ruby-debug-ide'

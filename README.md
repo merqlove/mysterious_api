@@ -11,6 +11,27 @@
         
         # Seed into DB
         $ make seed
+        
+        # Run project!
+        $ rails s     
+           
+           
+
+#### Few words about:
+- This project is a little blog with comments & follow-post option.
+  Also at the end i have added few jobs for addition & single mailer.
+- Here is 2 type of authentication, token auth & basic auth. 
+  Both works via Warden.
+- Yeah, this is Rails 5 beta3 API app. I have planned before to try its stability, 
+  after years on 4.x, so now i can say, that it works, 
+  but in my opinion Rails 4 currently really much stable, 
+  also because RSpec for Rails 5 too unstable.   
+- All security rules works via policies, which is also tested.
+- All JSON data works via AMS.
+- Also all JSON response bodies tested with JSON schema.
+           
+#### Documentation for V1 of current API:
+http://localhost:3000/docs/1        
 
 #### This project should be written in Ruby and created and put on Github or Bitbucket. The subject is not important, and can be anything and everything. Merely the below stated requirements must be fulfilled:
 

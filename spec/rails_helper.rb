@@ -8,7 +8,6 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'pundit/rspec'
-require 'ffaker'
 
 if ENV['COVERAGE']
   require 'simplecov'
