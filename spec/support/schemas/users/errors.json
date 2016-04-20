@@ -1,0 +1,13 @@
+{
+  "properties":{
+    "errors": {
+      "type": "object",
+      "properties": {
+        "email": { "type" : "array" },
+        "login": { "type" : "array" },
+        "password": { "type" : "array" },
+        "password_confirmation": { "type" : "array" }
+      }
+    }
+  }
+}

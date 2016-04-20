@@ -1,0 +1,40 @@
+options:
+  find_existing_by: ['post_id', 'user_id']
+records:
+  - sprig_id: 1
+    post_id: "<%= sprig_record(Post, 1).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+  - sprig_id: 2
+    post_id: "<%= sprig_record(Post, 1).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 3
+    post_id: "<%= sprig_record(Post, 1).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+
+  - sprig_id: 4
+    post_id: "<%= sprig_record(Post, 2).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 5
+    post_id: "<%= sprig_record(Post, 2).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+
+  - sprig_id: 6
+    post_id: "<%= sprig_record(Post, 3).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 7
+    post_id: "<%= sprig_record(Post, 3).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+
+  - sprig_id: 9
+    post_id: "<%= sprig_record(Post, 4).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 11
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+  - sprig_id: 12
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 13
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"

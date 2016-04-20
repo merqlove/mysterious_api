@@ -1,0 +1,69 @@
+---
+options:
+  find_existing_by: ['title', 'slug']
+records:
+  - sprig_id: 1
+    slug: refresh-page
+    status: published
+    meta_desc: Some text
+    meta_keywords: some words
+    title: Refresh it!
+    user_id: "<%= sprig_record(User, 1).id %>"
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem augue, feugiat ut volutpat quis,
+    laoreet eget nunc. Nulla bibendum bibendum sem, at egestas dolor sodales eleifend.
+    Praesent eget urna consectetur ex suscipit posuere at id massa. Nulla a risus id neque
+    hendrerit sollicitudin eget eu libero. Sed sed vestibulum dui. Ut pulvinar congue sodales.
+    Ut a ex vestibulum, lacinia elit et, scelerisque ex. Nam ac vehicula tellus. Vestibulum ullamcorper
+    lobortis augue non pulvinar. Donec lobortis aliquam mi non semper."
+  - sprig_id: 2
+    slug: try-it-up
+    status: published
+    meta_desc: Some text
+    meta_keywords: some words
+    user_id: "<%= sprig_record(User, 2).id %>"
+    title: Can you try it up?
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem augue, feugiat ut volutpat quis,
+             laoreet eget nunc. Nulla bibendum bibendum sem, at egestas dolor sodales eleifend.
+             Praesent eget urna consectetur ex suscipit posuere at id massa. Nulla a risus id neque
+             hendrerit sollicitudin eget eu libero. Sed sed vestibulum dui. Ut pulvinar congue sodales.
+             Ut a ex vestibulum, lacinia elit et, scelerisque ex. Nam ac vehicula tellus. Vestibulum ullamcorper
+             lobortis augue non pulvinar. Donec lobortis aliquam mi non semper."
+  - sprig_id: 3
+    slug: blow-your-mind
+    status: published
+    meta_desc: Some text
+    meta_keywords: some words
+    user_id: "<%= sprig_record(User, 4).id %>"
+    title: Blow your mind :)
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem augue, feugiat ut volutpat quis,
+                 laoreet eget nunc. Nulla bibendum bibendum sem, at egestas dolor sodales eleifend.
+                 Praesent eget urna consectetur ex suscipit posuere at id massa. Nulla a risus id neque
+                 hendrerit sollicitudin eget eu libero. Sed sed vestibulum dui. Ut pulvinar congue sodales.
+                 Ut a ex vestibulum, lacinia elit et, scelerisque ex. Nam ac vehicula tellus. Vestibulum ullamcorper
+                 lobortis augue non pulvinar. Donec lobortis aliquam mi non semper."
+  - sprig_id: 4
+    slug: find-tasks
+    status: published
+    meta_desc: Some text
+    meta_keywords: some words
+    user_id: "<%= sprig_record(User, 2).id %>"
+    title: Find roots!
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem augue, feugiat ut volutpat quis,
+                 laoreet eget nunc. Nulla bibendum bibendum sem, at egestas dolor sodales eleifend.
+                 Praesent eget urna consectetur ex suscipit posuere at id massa. Nulla a risus id neque
+                 hendrerit sollicitudin eget eu libero. Sed sed vestibulum dui. Ut pulvinar congue sodales.
+                 Ut a ex vestibulum, lacinia elit et, scelerisque ex. Nam ac vehicula tellus. Vestibulum ullamcorper
+                 lobortis augue non pulvinar. Donec lobortis aliquam mi non semper."
+  - sprig_id: 5
+    slug: generate-rules
+    status: published
+    meta_desc: Some text
+    meta_keywords: some words
+    user_id: "<%= sprig_record(User, 1) %>"
+    title: Generate your rules...
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sem augue, feugiat ut volutpat quis,
+                 laoreet eget nunc. Nulla bibendum bibendum sem, at egestas dolor sodales eleifend.
+                 Praesent eget urna consectetur ex suscipit posuere at id massa. Nulla a risus id neque
+                 hendrerit sollicitudin eget eu libero. Sed sed vestibulum dui. Ut pulvinar congue sodales.
+                 Ut a ex vestibulum, lacinia elit et, scelerisque ex. Nam ac vehicula tellus. Vestibulum ullamcorper
+                 lobortis augue non pulvinar. Donec lobortis aliquam mi non semper."

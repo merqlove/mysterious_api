@@ -1,0 +1,25 @@
+{
+  "required": [
+    "users",
+    "meta"
+  ],
+  "properties": {
+    "users" : {
+      "type" : "array",
+      "items": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id" : { "type" : "integer" },
+            "login" : { "type" : "string" },
+            "email" : { "type" : "string" },
+            "role" : { "type" : "string" }
+          }
+        }
+      ]
+    },
+    "meta" : { "type" : "object" }
+  }
+}
+

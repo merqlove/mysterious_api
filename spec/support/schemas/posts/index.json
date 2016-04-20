@@ -1,0 +1,47 @@
+{
+  "required": [
+    "posts",
+    "meta"
+  ],
+  "properties": {
+    "posts" : {
+      "type" : "array",
+      "additionalProperties": false,
+      "items":
+        {
+          "additionalProperties":false,
+          "required": [],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "meta_keywords": {
+                "type": "string"
+              },
+              "meta_desc": {
+                "type": "string"
+              },
+              "owner": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "login": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+
+        }
+
+    },
+    "meta" : { "type" : "object" }
+  }
+}
+

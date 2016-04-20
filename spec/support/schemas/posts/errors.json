@@ -1,0 +1,12 @@
+{
+  "properties":{
+    "errors": {
+      "type": "object",
+      "properties": {
+        "content": { "type" : "array" },
+        "title": { "type" : "array" },
+        "slug": { "type" : "array" }
+      }
+    }
+  }
+}

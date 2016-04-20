@@ -1,0 +1,40 @@
+---
+options:
+  find_existing_by: ['login', 'email']
+
+records:
+  - sprig_id: 1
+    login: admin
+    email: admin@example.com
+    password: "password"
+    password_confirmation: "password"
+    role: admin
+
+  - sprig_id: 2
+    login: user
+    email: user@example.com
+    password: "12345678"
+    password_confirmation: "12345678"
+    role: user
+
+  - sprig_id: 3
+    login: guest
+    email: guest@example.com
+    password: "12345678"
+    password_confirmation: "12345678"
+    role: guest
+
+  - sprig_id: 4
+    login: user2
+    email: user2@example.com
+    password: "12345678"
+    password_confirmation: "12345678"
+    role: user
+
+  - sprig_id: 5
+    login: guest2
+    email: guest2@example.com
+    password: "12345678"
+    password_confirmation: "12345678"
+    role: guest
+

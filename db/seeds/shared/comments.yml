@@ -1,0 +1,67 @@
+options:
+  find_existing_by: ['post_id', 'user_id', 'content']
+records:
+  - sprig_id: 1
+    content: Refresh page1
+    post_id: "<%= sprig_record(Post, 1).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+  - sprig_id: 2
+    content: Refresh page2
+    post_id: "<%= sprig_record(Post, 1).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 3
+    content: Refresh page3
+    post_id: "<%= sprig_record(Post, 1).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+
+  - sprig_id: 4
+    content: Refresh page4
+    post_id: "<%= sprig_record(Post, 2).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 5
+    content: Refresh page5
+    post_id: "<%= sprig_record(Post, 2).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+
+  - sprig_id: 6
+    content: Refresh page6
+    post_id: "<%= sprig_record(Post, 3).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 7
+    content: Refresh page7
+    post_id: "<%= sprig_record(Post, 3).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+  - sprig_id: 8
+    content: Refresh page8
+    post_id: "<%= sprig_record(Post, 3).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+
+  - sprig_id: 9
+    content: Refresh page9
+    post_id: "<%= sprig_record(Post, 4).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+  - sprig_id: 10
+    content: Refresh page10
+    post_id: "<%= sprig_record(Post, 4).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+
+  - sprig_id: 11
+    content: Refresh page11
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+  - sprig_id: 12
+    content: Refresh page12
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
+  - sprig_id: 13
+    content: Refresh page13
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 4).id %>"
+  - sprig_id: 14
+    content: Refresh page14
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 1).id %>"
+  - sprig_id: 15
+    content: Refresh page15
+    post_id: "<%= sprig_record(Post, 5).id %>"
+    user_id: "<%= sprig_record(User, 2).id %>"
