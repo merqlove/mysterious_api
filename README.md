@@ -1,5 +1,17 @@
 ## Mysterious Ruby Backend
 
+        # Install gems
+        $ bundle install
+        
+        # Setup DB
+        $ rails db:create
+        
+        # Migrate DB
+        $ make migrate 
+        
+        # Seed into DB
+        $ make seed
+
 #### This project should be written in Ruby and created and put on Github or Bitbucket. The subject is not important, and can be anything and everything. Merely the below stated requirements must be fulfilled:
 
 - It must be API (REST, JSON).
