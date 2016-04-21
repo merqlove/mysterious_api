@@ -6,7 +6,6 @@ module Api
       resource_description do
         short 'Users'
         formats ['json']
-        param :id, :number, :desc => 'User ID', :required => false
         api_version '1'
       end
 

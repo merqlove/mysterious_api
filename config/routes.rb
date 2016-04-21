@@ -10,9 +10,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       put 'tokens', to: 'tokens#update'
       resources :users, except: [:edit, :new], concerns: :paginatable
-      resources :posts, except: [:edit, :new], concerns: :paginatable do
-        resources :comments, except: [:edit, :new], concerns: :paginatable
+      resources :comments, except: [:edit, :new, :create], concerns: :paginatable
 
+      get 'posts/:post_id/comments(/page/:page)', to: 'comments#index_for_post', as: 'post_comments'
+      post 'posts/:post_id/comments', to: 'comments#create', as: nil
+
+      resources :posts, except: [:edit, :new], concerns: :paginatable do
         post 'publish', on: :member
         post 'unpublish', on: :member
 

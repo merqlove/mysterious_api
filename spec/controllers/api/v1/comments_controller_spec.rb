@@ -17,7 +17,29 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
       post = create(:post)
       comment = create(:comment, post: post, user: user)
       sign_in user
-      get :index, params: {:post_id => post.to_param}, session: valid_session
+      get :index, params: {}, session: valid_session
+      expect(response).to have_http_status(:success)
+      expect(assigns(:comments)).to eq([comment])
+      assert_response_schema('comments/index.json')
+    end
+
+    it "restricts access to unauthorised" do
+      user = create(:user)
+      post = create(:post)
+      create(:comment, post: post, user: user)
+      get :index, params: {}, session: valid_session
+      expect(response).to have_http_status(401)
+      assert_response_schema('status/error.json')
+    end
+  end
+
+  describe "GET #index_for_post" do
+    it "assigns all comments as @comments" do
+      user = create(:user)
+      post = create(:post)
+      comment = create(:comment, post: post, user: user)
+      sign_in user
+      get :index_for_post, params: {:post_id => post.to_param}, session: valid_session
       expect(response).to have_http_status(:success)
       expect(assigns(:comments)).to eq([comment])
       assert_response_schema('comments/index.json')
@@ -25,7 +47,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
 
     it "restricts access to unauthorised" do
       post = create(:post)
-      get :index, params: {:post_id => post.to_param}, session: valid_session
+      get :index_for_post, params: {:post_id => post.to_param}, session: valid_session
       expect(response).to have_http_status(401)
       assert_response_schema('status/error.json')
     end
@@ -37,8 +59,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
       post = create(:post)
       comment = create(:comment, post: post, user: user)
       sign_in user
-      get :show, params: {:id => comment.to_param, 
-                          :post_id => post.to_param}, session: valid_session
+      get :show, params: {:id => comment.to_param}, session: valid_session
       expect(response).to have_http_status(:success)
       expect(assigns(:comment)).to eq(comment)
       assert_response_schema('comments/show.json')
@@ -48,8 +69,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
       post = create(:post)
       user = create(:user)
       comment = create(:comment, post: post, user: user)
-      get :show, params: {:id => comment.to_param, 
-                          :post_id => post.to_param}, session: valid_session
+      get :show, params: {:id => comment.to_param}, session: valid_session
       expect(response).to have_http_status(401)
       assert_response_schema('status/error.json')
     end
@@ -125,8 +145,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
         sign_in user
         post_obj.update(owner: user)
         comment = create(:comment, post: post_obj, user: user)
-        put :update, params: {:id => comment.to_param, 
-                              :post_id => post_obj.to_param, 
+        put :update, params: {:id => comment.to_param,
                               :comment => valid_attributes}, session: valid_session
         comment.reload
         expect(response).to have_http_status(200)
@@ -140,7 +159,6 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
         comment = create(:comment, post: post_obj, user: user)
         sign_in admin
         put :update, params: {:id => comment.to_param,
-                              :post_id => post_obj.to_param,
                               :comment => valid_attributes}, session: valid_session
         comment.reload
         expect(response).to have_http_status(200)
@@ -154,8 +172,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
         post_obj.update(owner: user)
         comment = create(:comment, post: post_obj, user: user)
         put :update, params: {:id => comment.to_param,
-                              :post_id => post_obj.to_param,
-                              :post => valid_attributes}, session: valid_session
+                              :comment => valid_attributes}, session: valid_session
         expect(response).to have_http_status(403)
         expect(assigns(:comment)).to eq(comment)
         assert_response_schema('status/error.json')
@@ -169,7 +186,6 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
         post_obj.update(owner: user)
         comment = create(:comment, post: post_obj, user: user)
         put :update, params: {:id => comment.to_param,
-                              :post_id => post_obj.to_param,
                               :comment => invalid_attributes}, session: valid_session
         expect(response).to have_http_status(422)
         expect(assigns(:comment)).to eq(comment)
@@ -181,7 +197,6 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
         sign_in user
         comment = create(:comment, post: post_obj, user: user)
         put :update, params: {:id => comment.to_param,
-                              :post_id => post_obj.to_param,
                               :comment => invalid_attributes}, session: valid_session
         expect(response).to have_http_status(403)
         expect(assigns(:comment)).to eq(comment)
@@ -199,7 +214,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
       comment = create(:comment, post: post, user: user)
       sign_in admin
       expect {
-        delete :destroy, params: {:id => comment.to_param, :post_id => post.to_param}, session: valid_session
+        delete :destroy, params: {:id => comment.to_param}, session: valid_session
       }.to change(Comment, :count).by(-1)
       expect(response).to have_http_status(204)
       assert_response_schema('status/success.json')
@@ -211,7 +226,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
       comment = create(:comment, post: post, user: user)
       sign_in user
       expect {
-        delete :destroy, params: {:id => comment.to_param, :post_id => post.to_param}, session: valid_session
+        delete :destroy, params: {:id => comment.to_param}, session: valid_session
       }.to change(Comment, :count).by(-1)
       expect(response).to have_http_status(204)
       assert_response_schema('status/success.json')
@@ -224,7 +239,7 @@ RSpec.describe Api::V1::CommentsController, type: :controller, acceptance: true 
       comment = create(:comment, post: post, user: user)
       sign_in guest
       expect {
-        delete :destroy, params: {:id => comment.to_param, :post_id => post.to_param}, session: valid_session
+        delete :destroy, params: {:id => comment.to_param}, session: valid_session
       }.to change(Comment, :count).by(0)
       expect(response).to have_http_status(403)
       assert_response_schema('status/error.json')

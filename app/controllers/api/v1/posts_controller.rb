@@ -6,11 +6,10 @@ module Api
       resource_description do
         short 'Posts'
         formats ['json']
-        param :id, Post::POST_SLUG_REGEX, :desc => 'Post ID', :required => false
         api_version '1'
       end
 
-      api :GET, '/v1posts', 'List posts'
+      api :GET, '/v1/posts', 'List posts'
       description 'List posts with pagination support'
       param :page, :number, desc: 'Page number'
       def index
