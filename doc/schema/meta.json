@@ -1,0 +1,9 @@
+{
+  "description": "Mysterious Blog API",
+  "id": "mysterious",
+  "links": [{
+    "href": "https://mysterious.com/api",
+    "rel": "self"
+  }],
+  "title": "Mysterious Blog API"
+}

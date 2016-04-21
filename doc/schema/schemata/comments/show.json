@@ -1,0 +1,33 @@
+{
+  "required": [
+    "comment"
+  ],
+  "properties": {
+    "comment" : {
+      "required": [
+        "id",
+        "content"
+      ],
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "id" : { "type" : "integer" },
+        "content" : { "type" : "string" },
+        "post": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {  "type": "string" }
+          }
+        },
+        "user": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "login": {  "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

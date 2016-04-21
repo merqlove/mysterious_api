@@ -78,6 +78,9 @@ GEM
       slim (>= 1.3.6, < 4.0)
       terminal-table (~> 1.4)
     builder (3.2.2)
+    committee (1.14.0)
+      json_schema (~> 0.6, >= 0.6.1)
+      rack (>= 1.5)
     concurrent-ruby (1.0.1)
     coveralls (0.8.13)
       json (~> 1.8)
@@ -145,6 +148,9 @@ GEM
       ast (~> 2.2)
     pg (0.18.4)
     powerpack (0.1.1)
+    prmd (0.11.7)
+      erubis (~> 2.7)
+      json_schema (~> 0.3, >= 0.3.1)
     puma (3.4.0)
     rack (2.0.0.alpha)
       json
@@ -275,6 +281,7 @@ DEPENDENCIES
   apipie-rails
   bcrypt
   brakeman
+  committee
   coveralls
   dalli
   database_cleaner
@@ -290,6 +297,7 @@ DEPENDENCIES
   oj
   oj_mimic_json
   pg (~> 0.18)
+  prmd
   puma
   pundit!
   rack-attack

@@ -1,0 +1,10 @@
+{
+  "properties":{
+    "errors": {
+      "type": "object",
+      "properties": {
+        "content": { "type" : "array" }
+      }
+    }
+  }
+}

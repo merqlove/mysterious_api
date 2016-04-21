@@ -70,6 +70,8 @@ group :development, :test do
 end
 
 gem 'apipie-rails'
+gem 'prmd'
+gem 'committee'
 
 group :development do
   gem 'listen', '~> 3.0.5'
