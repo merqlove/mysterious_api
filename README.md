@@ -41,8 +41,8 @@
 - Integration with `prmd`.
 - No API docs in controllers anymore. Only JSON Schema for all.
            
-#### Documentation for V1 of current API:
-http://localhost:3000/docs/1        
+#### Documentation for API:
+- [V1](docs/api_v1.md)
 
 #### This project should be written in Ruby and created and put on Github or Bitbucket. The subject is not important, and can be anything and everything. Merely the below stated requirements must be fulfilled:
 
