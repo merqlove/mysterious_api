@@ -67,6 +67,7 @@ group :development, :test do
   gem 'coveralls'
 
   gem 'rspec-rails', '~> 3.5.0.beta3'
+  gem 'prmd'
 end
 
 gem 'committee'
@@ -77,7 +78,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'mail'
-  gem 'prmd'
   gem 'heroics'
 end
 

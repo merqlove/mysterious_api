@@ -2,7 +2,7 @@ module JsonMatcherHelpers
   def match_response_schema(response, opts)
     data = JSON.parse!(response&.body)
 
-    schema = JsonSchema.parse!(opts[:v1])
+    schema = JsonSchema.parse!(opts[:schema])
     schema.expand_references!
 
     schema = schema.definitions[opts[:parent]] if opts[:parent]
@@ -22,7 +22,7 @@ end
 
 module CustomMatchers
   def match_json_schema(**opts)
-    opts[:v1]      = schema_contents
+    opts[:schema]      = schema_contents
     opts[:schema_path] = schema_path
     MatchJsonSchema.new(opts)
   end

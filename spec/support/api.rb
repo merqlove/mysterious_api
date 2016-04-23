@@ -1,3 +1,5 @@
+load 'lib/tasks/schema.rake'
+
 module ApiAuthHelper
   include Warden::Test::Helpers
 

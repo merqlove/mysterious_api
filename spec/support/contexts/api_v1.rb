@@ -5,5 +5,19 @@ RSpec.shared_context 'api_v1' do
 
   let(:last_response) { response }
   let(:last_request) { request }
-  let(:schema_path) { "#{Rails.root}/docs/v1/schema.json" }
+  let(:schema_path) { schema_path_plain }
+
+  before :all do
+    generate_schema unless File.exist?(schema_path_plain)
+  end
+
+  def schema_path_plain
+    "#{Rails.root}/docs/v1/schema.json"
+  end
+
+  def generate_schema
+    Rake::Task['api:v1:schema:combine'].invoke
+    Rake::Task['api:v1:schema:verify'].invoke
+    Rake::Task['api:v1:schema:doc'].invoke
+  end
 end
