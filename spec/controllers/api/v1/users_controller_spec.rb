@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
-
+  include_context 'api_v1'
+  
   let(:valid_attributes) {
     { login: 'eee', email: 'bbb@ddd.ru', password: 'a12344556', password_confirmation: 'a12344556'}
   }
@@ -12,6 +13,10 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
   let(:valid_session) { {} }
 
+  def match_users_error
+    match_response_schema(parent: 'user', definition: 'errors_object')
+  end
+
   describe "GET #index" do
     it "assigns all users as @users" do
       user = create(:admin)
@@ -19,13 +24,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       get :index, params: {}, session: valid_session
       expect(response).to have_http_status(:success)
       expect(assigns(:users)).to eq([user])
-      assert_response_schema('users/index.json')
+      assert_schema_conform
     end
 
     it "restricts access to unauthorised" do
       get :index, params: {}, session: valid_session
       expect(response).to have_http_status(401)
-      assert_response_schema('status/error.json')
+      match_shared_error
     end
   end
 
@@ -36,14 +41,14 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       get :show, params: {:id => user.to_param}, session: valid_session
       expect(response).to have_http_status(:success)
       expect(assigns(:user)).to eq(user)
-      assert_response_schema('users/show.json')
+      assert_schema_conform
     end
 
     it "restricts access to unauthorised" do
       user = create(:user)
       get :show, params: {:id => user.to_param}, session: valid_session
       expect(response).to have_http_status(401)
-      assert_response_schema('status/error.json')
+      match_shared_error
     end
   end
 
@@ -56,7 +61,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
           post :create, params: {:user => valid_attributes}, session: valid_session
         }.to change(User, :count).by(1)
         expect(response).to have_http_status(201)
-        assert_response_schema('users/show.json')
+        assert_schema_conform
       end
 
       it "assigns a newly created user as @user" do
@@ -66,7 +71,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         expect(response).to have_http_status(201)
         expect(assigns(:user)).to be_a(User)
         expect(assigns(:user)).to be_persisted
-        assert_response_schema('users/show.json')
+        assert_schema_conform
       end
 
       it "restricts access to guests" do
@@ -74,7 +79,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         sign_in user
         post :create, params: {:user => valid_attributes}, session: valid_session
         expect(response).to have_http_status(403)
-        assert_response_schema('status/error.json')
+        match_shared_error
       end
     end
 
@@ -85,7 +90,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         post :create, params: {:user => invalid_attributes}, session: valid_session
         expect(response).to have_http_status(422)
         expect(assigns(:user)).to be_a_new(User)
-        assert_response_schema('users/errors.json')
+        match_users_error
       end
 
       it "restricts access to guests" do
@@ -93,7 +98,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         sign_in user
         post :create, params: {:user => invalid_attributes}, session: valid_session
         expect(response).to have_http_status(403)
-        assert_response_schema('status/error.json')
+        match_shared_error
       end
     end
   end
@@ -107,7 +112,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         user.reload
         expect(response).to have_http_status(200)
         expect(assigns(:user)).to eq(user)
-        assert_response_schema('users/show.json')
+        assert_schema_conform
       end
 
       it "assigns the requested user as @user" do
@@ -118,7 +123,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         user.reload
         expect(response).to have_http_status(200)
         expect(assigns(:user)).to eq(user)
-        assert_response_schema('users/show.json')
+        assert_schema_conform
       end
 
       it "restricts access for the guests" do
@@ -127,7 +132,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         put :update, params: {:id => user.to_param, :user => valid_attributes}, session: valid_session
         expect(response).to have_http_status(403)
         expect(assigns(:user)).to eq(user)
-        assert_response_schema('status/error.json')
+        match_shared_error
       end
     end
 
@@ -138,7 +143,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         put :update, params: {:id => user.to_param, :user => invalid_attributes}, session: valid_session
         expect(assigns(:user)).to eq(user)
         expect(response).to have_http_status(422)
-        assert_response_schema('users/errors.json')
+        match_users_error
       end
 
       it "restricts access for the guests" do
@@ -147,7 +152,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         put :update, params: {:id => user.to_param, :user => invalid_attributes}, session: valid_session
         expect(response).to have_http_status(403)
         expect(assigns(:user)).to eq(user)
-        assert_response_schema('status/error.json')
+        match_shared_error
       end
     end
   end
@@ -161,7 +166,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         delete :destroy, params: {:id => user.to_param}, session: valid_session
       }.to change(User, :count).by(-1)
       expect(response).to have_http_status(204)
-      assert_response_schema('status/success.json')
+      match_shared_success
     end
 
     it "destroys the same user" do
@@ -171,7 +176,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         delete :destroy, params: {:id => user.to_param}, session: valid_session
       }.to change(User, :count).by(-1)
       expect(response).to have_http_status(204)
-      assert_response_schema('status/success.json')
+      match_shared_success
     end
 
     it "restricts for guest" do
@@ -181,7 +186,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         delete :destroy, params: {:id => user.to_param}, session: valid_session
       }.to change(User, :count).by(0)
       expect(response).to have_http_status(403)
-      assert_response_schema('status/error.json')
+      match_shared_error
     end
   end
 

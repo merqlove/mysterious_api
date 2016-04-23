@@ -7,5 +7,5 @@ class UserSerializer < ApplicationSerializer
     is_admin? || current_user == object
   end
 
-  has_many :followings, serializer: PostSerializer
+  has_many :followings, serializer: PostPreviewSerializer
 end

@@ -55,7 +55,7 @@ module Warden
         end
       end
 
-      def _process_unauthenticated(env, options = {})
+      def _process_unauthenticated(env, **options)
         options[:action] ||= :unauthenticated
         proxy = env['warden']
         result = options[:result] || proxy.result

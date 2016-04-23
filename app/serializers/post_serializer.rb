@@ -1,6 +1,6 @@
 class PostSerializer < ApplicationSerializer
   cache key: 'posts', expires_in: 3.hours
-  attributes :title, :content, :meta_keywords, :meta_desc
+  attributes :slug, :title, :content, :meta_keywords, :meta_desc, :status
 
   include FriendlyConcern
 

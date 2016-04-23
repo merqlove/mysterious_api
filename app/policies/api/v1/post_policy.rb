@@ -57,7 +57,7 @@ module Api
       end
 
       def default_permitted_attributes
-        [:title, :content, :meta_keywords, :meta_desc]
+        [:title, :slug, :content, :meta_keywords, :meta_desc]
       end
 
       def is_guest?

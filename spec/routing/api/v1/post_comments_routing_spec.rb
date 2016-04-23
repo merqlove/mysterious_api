@@ -4,11 +4,15 @@ RSpec.describe Api::V1::CommentsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/api/v1/posts/1/comments").to route_to("api/v1/comments#index", :post_id => "1")
+      expect(:get => "/api/v1/comments").to route_to("api/v1/comments#index")
+    end
+
+    it "routes to #index_for_post" do
+      expect(:get => "/api/v1/posts/1/comments").to route_to("api/v1/comments#index_for_post", :post_id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/api/v1/posts/1/comments/2").to route_to("api/v1/comments#show", :post_id => "1", :id => "2")
+      expect(:get => "/api/v1/comments/2").to route_to("api/v1/comments#show", :id => "2")
     end
 
     it "routes to #create" do
@@ -16,16 +20,17 @@ RSpec.describe Api::V1::CommentsController, type: :routing do
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/api/v1/posts/1/comments/2").to route_to("api/v1/comments#update", :post_id => "1", :id => "2")
+      expect(:put => "/api/v1/comments/2").to route_to("api/v1/comments#update", :id => "2")
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/api/v1/posts/1/comments/2").to route_to("api/v1/comments#update", :post_id => "1", :id => "2")
+      expect(:patch => "/api/v1/comments/2").to route_to("api/v1/comments#update", :id => "2")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/api/v1/posts/1/comments/2").to route_to("api/v1/comments#destroy", :post_id => "1", :id => "2")
+      expect(:delete => "/api/v1/comments/2").to route_to("api/v1/comments#destroy", :id => "2")
     end
 
   end
 end
+

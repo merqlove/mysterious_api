@@ -69,21 +69,20 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5.0.beta3'
 end
 
-gem 'apipie-rails'
-gem 'prmd'
 gem 'committee'
+gem 'json_schema'
 
 group :development do
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'mail'
+  gem 'prmd'
+  gem 'heroics'
 end
 
 group :test do
   gem 'database_cleaner'
-
-  gem 'json_schema'
 
   gem 'email_spec'
   gem 'shoulda-matchers', '3.1.1', require: false

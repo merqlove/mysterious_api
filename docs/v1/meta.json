@@ -2,7 +2,7 @@
   "description": "Mysterious Blog API",
   "id": "mysterious",
   "links": [{
-    "href": "https://mysterious.com/api",
+    "href": "https://mysterious.com/api/v1",
     "rel": "self"
   }],
   "title": "Mysterious Blog API"
