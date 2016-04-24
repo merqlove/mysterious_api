@@ -4,6 +4,9 @@ require 'prmd/rake_tasks/doc'
 
 namespace :api do
   namespace :v1 do
+    desc 'Api V1 Schema task'
+    task schema: %w(schema:combine schema:verify schema:doc)
+
     namespace :schema do
       Prmd::RakeTasks::Combine.new do |t|
         t.options[:meta] = 'docs/v1/meta.json'
@@ -20,9 +23,8 @@ namespace :api do
         t.options[:prepend] = ['docs/v1/overview.md']
         t.files = {'docs/v1/schema.json' => 'docs/api_v1.md'}
       end
-
-      task default: %w(schema:combine schema:verify schema:doc)
     end
-
   end
 end
+
+

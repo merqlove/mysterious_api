@@ -16,8 +16,6 @@ RSpec.shared_context 'api_v1' do
   end
 
   def generate_schema
-    Rake::Task['api:v1:schema:combine'].invoke
-    Rake::Task['api:v1:schema:verify'].invoke
-    Rake::Task['api:v1:schema:doc'].invoke
+    Rake::Task['api:v1:schema'].invoke
   end
 end
