@@ -11,7 +11,7 @@ gem 'puma'
 # API
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
-# gem 'foreman', require: false
+gem 'foreman', require: false
 
 # Auth
 gem 'warden'
@@ -52,7 +52,7 @@ group :development, :test do
 
   gem 'factory_girl_rails', '~> 4.5'
 
-  gem 'rubocop', require: false
+  # gem 'rubocop', require: false
   gem 'brakeman', require: false
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,7 +67,7 @@ group :development, :test do
   gem 'coveralls'
 
   gem 'rspec-rails', '~> 3.5.0.beta3'
-  gem 'prmd'
+  gem 'prmd', require: false
 end
 
 gem 'committee'
@@ -78,7 +78,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'mail'
-  gem 'heroics'
+  gem 'heroics', require: false
 end
 
 group :test do
