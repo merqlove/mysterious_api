@@ -10,3 +10,7 @@ seed:
 
 doc_v1:
 	rails api:v1:schema
+
+killall:
+	sudo killall fsevent_watch
+
