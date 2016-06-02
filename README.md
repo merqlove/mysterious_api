@@ -11,13 +11,13 @@
 
         # Install gems
         $ bundle install
-        
+
         # Setup DB
         $ rails db:create
-        
+
         # Migrate DB
-        $ make migrate 
-        
+        $ make migrate
+
         # Seed into DB
         $ make seed
         
@@ -71,3 +71,7 @@ Bonus points
 If you feel strong as a full stack developer please build a CRUD web app (with login) that consumes the API described above. Please use your preferred UI JavaScript library.
 
 Good luck - and enjoy!
+
+Copyright (c) 2016 Alexander Merkulov
+
+MIT License
